@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useUserStore } from '../stores/UserStore'
 
 defineProps<{ msg: string }>()
+
+const store = useUserStore()
 
 const count = ref(0)
 </script>
 
 <template>
   <h1>{{msg}}</h1>
+  <button @click="store.addUser('user', 'user')">Klick</button>
 </template>
 
 <style scoped>
