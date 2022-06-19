@@ -7,5 +7,13 @@ export interface UserProps {
   id: number
   login: string
   password: string
-  favouriteFoods: Array<string>
+  favouriteFoods: Array<FoodProps>
+}
+
+export interface FoodProps {
+  id: number
+  name: string
+  protein: number
+  fat: number
+  carbs: number
 }

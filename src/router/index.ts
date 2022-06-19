@@ -8,6 +8,23 @@ const routes = [
     path: '/user',
     name: 'UserPage',
     component: () => import('@/views/UserPage.vue'),
+    children: [
+      {
+        path: '/user/print',
+        name: 'PrintFoods',
+        component: () => import('@/views/PrintFoods.vue'),
+      },
+      {
+        path: '/user/del',
+        name: 'DelFood',
+        component: () => import('@/views/DelFood.vue'),
+      },
+      {
+        path: '/user/add',
+        name: 'AddFood',
+        component: () => import('@/views/AddFood.vue'),
+      },
+    ],
   },
 ]
 

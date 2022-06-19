@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { UserStateProps } from '../types/UserType'
+import { UserStateProps, FoodProps } from '../types/UserType'
 
 export const useUserStore = defineStore('UserStore', {
   state: (): UserStateProps => ({
@@ -36,6 +36,20 @@ export const useUserStore = defineStore('UserStore', {
       )
       this.activeUser = testPassword !== undefined ? testPassword.id : null
       return testPassword !== undefined ? true : false
+    },
+
+    addFood(data: FoodProps) {
+      const currUser = this.users.find((user) => user.id === this.activeUser)
+      if (currUser !== undefined) {
+        const newArr = currUser.favouriteFoods
+        newArr.push(data)
+        this.users = this.users.filter((user) => user.id !== this.activeUser)
+        const { id, login, password } = currUser
+        this.users = [
+          ...this.users,
+          { id, login, password, favouriteFoods: newArr },
+        ]
+      }
     },
   },
 })
