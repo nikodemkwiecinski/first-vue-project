@@ -51,5 +51,13 @@ export const useUserStore = defineStore('UserStore', {
         ]
       }
     },
+    getFoodTable(): Array<FoodProps> {
+      const currUser = this.users.find((user) => user.id === this.activeUser)
+      if (currUser !== undefined) {
+        const newArr = currUser.favouriteFoods
+        return newArr
+      }
+      return []
+    },
   },
 })

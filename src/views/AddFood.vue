@@ -29,7 +29,6 @@ const handleQuery = async () => {
       .catch((err) => console.log(err))
     query.value = ''
     if (response.length > 0) {
-      console.log(response)
       isCorrect.value = true
       const newFood: FoodProps = {
         id: response[0].fdcId,
